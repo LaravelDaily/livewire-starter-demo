@@ -17,6 +17,9 @@
                         File
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Categories
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -44,6 +47,13 @@
                             ])>
                                 {{ $task->is_completed ? 'Completed' : 'In progress' }}
                             </span>
+                        </td>
+                        <td class="px-6 py-4 space-x-1">
+                            @foreach($task->taskCategories as $category)
+                                <span class="rounded-full bg-gray-200 px-2 py-1 text-xs">
+                                    {{ $category->name }}
+                                </span>
+                            @endforeach
                         </td>
                         <td class="px-6 py-4 space-x-2">
                             <flux:button href="{{ route('tasks.edit', $task) }}" variant="filled">{{ __('Edit') }}</flux:button>

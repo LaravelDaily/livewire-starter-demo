@@ -1,6 +1,8 @@
 <section>
     <x-alerts.success />
 
+    <flux:button href="{{ route('tasks.create') }}" variant="filled" class="mb-4">{{ __('Create Task') }}</flux:button>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -31,7 +33,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 space-x-2">
-                            <flux:button href="#" variant="filled" type="button">{{ __('Edit') }}</flux:button>
+                            <flux:button href="#" variant="filled">{{ __('Edit') }}</flux:button>
                             <flux:button wire:confirm="Are you sure?" wire:click="delete({{ $task->id }})" variant="danger" type="button">{{ __('Delete') }}</flux:button>
                         </td>
                     </tr>

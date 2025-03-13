@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
     Route::get('tasks', Tasks\Index::class)->name('tasks.index');
+    Route::get('tasks/create', Tasks\Create::class)->name('tasks.create');
 });
 
 require __DIR__.'/auth.php';

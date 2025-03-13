@@ -6,6 +6,19 @@
         <flux:button href="{{ route('task-categories.index') }}" variant="filled">{{ __('Manage Task Categories') }}</flux:button>
     </div>
 
+    <div class="mb-4 flex flex-row justify-end gap-x-2 w-full">
+        <ul class="items-center w-fit text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            @foreach($categories as $category)
+                <li class="w-full pr-2 border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <input wire:model.live="selectedCategories" id="{{ $category->id }}-checkbox-list" type="checkbox" value="{{ $category->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="{{ $category->id }}-checkbox-list" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $category->name }}</label>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

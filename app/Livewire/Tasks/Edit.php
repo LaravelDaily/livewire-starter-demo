@@ -20,7 +20,7 @@ class Edit extends Component
     public bool $is_completed;
 
     #[Validate('nullable|date')]
-    public string $due_date;
+    public ?string $due_date;
 
     #[Validate('nullable|file|max:10240')]
     public $media;
@@ -39,7 +39,7 @@ class Edit extends Component
         $this->task->load('media', 'taskCategories');
         $this->name = $task->name;
         $this->is_completed = $task->is_completed;
-        $this->due_date = $task->due_date->format('Y-m-d');
+        $this->due_date = $task->due_date?->format('Y-m-d');
         $this->selectedCategories = $task->taskCategories->pluck('id')->toArray();
     }
 
@@ -50,7 +50,7 @@ class Edit extends Component
         $this->task->update([
             'name'         => $this->name,
             'is_completed' => $this->is_completed,
-            'due_date'     => $this->due_date,
+            'due_date'     => $this->due_date ?? null,
         ]);
 
         if ($this->media) {

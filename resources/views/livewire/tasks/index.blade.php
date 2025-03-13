@@ -11,6 +11,9 @@
                         Task
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        File
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -24,6 +27,13 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $task->name }}
                         </th>
+                        <td class="px-6 py-4">
+                            @if($task->media_file)
+                                <a href="{{ $task->media_file->original_url }}" target="_blank">
+                                    <img src="{{ $task->media_file->original_url }}" alt="{{ $task->name }}" class="w-8 h-8" />
+                                </a>
+                            @endif
+                        </td>
                         <td class="px-6 py-4">
                             <span @class([
                                 'text-green-600' => $task->is_completed,

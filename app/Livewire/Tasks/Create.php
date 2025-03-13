@@ -5,24 +5,34 @@ namespace App\Livewire\Tasks;
 use App\Models\Task;
 use Livewire\Component;
 use Illuminate\View\View;
+use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 
 class Create extends Component
 {
+    use WithFileUploads;
+
     #[Validate('required|string|max:255')]
-    public string $name;
+    public string $name = '';
 
     #[Validate('nullable|date')]
-    public string $due_date;
+    public string|null $due_date = '';
+
+    #[Validate('nullable|file|max:10240')]
+    public $media;
 
     public function save(): void
     {
         $this->validate();
 
-        Task::create([
+        $task = Task::create([
             'name' => $this->name,
             'due_date' => $this->due_date,
         ]);
+
+        if ($this->media) {
+            $task->addMedia($this->media)->toMediaCollection();
+        }
 
         session()->flash('success', 'Task successfully created.');
 

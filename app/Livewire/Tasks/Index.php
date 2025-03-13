@@ -8,6 +8,13 @@ use Illuminate\View\View;
 
 class Index extends Component
 {
+    public function delete(int $id): void
+    {
+        Task::where('id', $id)->delete();
+
+        session()->flash('success', 'Task successfully deleted.');
+    }
+
     public function render(): View
     {
         return view('livewire.tasks.index', [

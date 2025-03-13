@@ -55,6 +55,10 @@
     @apply  !mb-0 !leading-tight;
 }
 
+[data-current] {
+    @apply bg-[oklch(0.846_0.076_269.861/0.19)];
+}
+
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {

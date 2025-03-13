@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('tasks', Tasks\Index::class)->name('tasks.index');
     Route::get('tasks/create', Tasks\Create::class)->name('tasks.create');
+    Route::get('tasks/{task}/edit', Tasks\Edit::class)->name('tasks.edit');
 });
 
 require __DIR__.'/auth.php';

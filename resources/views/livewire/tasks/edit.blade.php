@@ -7,9 +7,10 @@
             badge="required"
         />
 
-        <flux:checkbox
+        <flux:switch
             wire:model="is_completed"
             label="Completed?"
+            align="left"
         />
 
         <div>

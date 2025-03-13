@@ -15,6 +15,9 @@ class Edit extends Component
     #[Validate('nullable|boolean')]
     public bool $is_completed;
 
+    #[Validate('nullable|date')]
+    public string $due_date;
+
     public Task $task;
 
     public function mount(Task $task): void
@@ -22,6 +25,7 @@ class Edit extends Component
         $this->task = $task;
         $this->name = $task->name;
         $this->is_completed = $task->is_completed;
+        $this->due_date = $task->due_date->format('Y-m-d');
     }
 
     public function save(): void
@@ -31,9 +35,10 @@ class Edit extends Component
         $this->task->update([
             'name'         => $this->name,
             'is_completed' => $this->is_completed,
+            'due_date'     => $this->due_date,
         ]);
 
-        session()->flash('success', 'Task successfully created.');
+        session()->flash('success', 'Task successfully updated.');
 
         $this->redirectRoute('tasks.index', navigate: true);
     }

@@ -15,6 +15,9 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
+                <flux:navbar.item icon="briefcase" :href="route('tasks.index')" :current="request()->routeIs('tasks.*')" wire:navigate>
+                    {{ __('Tasks') }}
+                </flux:navbar.item>
             </flux:navbar>
 
             <flux:spacer />

@@ -56,7 +56,7 @@
 }
 
 [data-current] {
-    @apply after:bg-blue-600;
+    @apply bg-[oklch(0.846_0.076_269.861/0.19)] dark:bg-[oklch(0.269_0_0)];
 }
 
 input:focus[data-flux-control],

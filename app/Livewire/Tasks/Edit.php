@@ -58,7 +58,7 @@ class Edit extends Component
             $this->task->addMedia($this->media)->toMediaCollection();
         }
 
-        $this->task->taskCategories()->sync($this->selectedCategories, []);
+        $this->task->taskCategories()->sync($this->selectedCategories ?? []);
 
         session()->flash('success', 'Task successfully updated.');
 
